@@ -1,0 +1,31 @@
+<div *ngIf="auth.isLoggedIn()" style="margin-bottom:1rem;">
+  <form (ngSubmit)="create()" class="d-flex gap-2">
+    <input class="form-control" [(ngModel)]="newUrl" name="url" placeholder="New URL" required>
+    <button class="btn btn-primary" type="submit">Shorten</button>
+  </form>
+  <div *ngIf="errorMsg" class="alert alert-danger mt-2">{{errorMsg}}</div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Short</th>
+      <th>Original</th>
+      <th>Owner</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of urls">
+      <td>{{u.id}}</td>
+      <td><a [href]="'/s/' + u.shortCode" target="_blank">{{u.shortCode}}</a></td>
+      <td>{{u.originalUrl}}</td>
+      <td>{{u.createdBy}}</td>
+      <td>
+        <a *ngIf="canViewInfo()" class="btn btn-sm btn-info me-1" [routerLink]="['/info', u.id]">Details</a>
+        <button *ngIf="canDelete(u)" class="btn btn-sm btn-danger" (click)="remove(u.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

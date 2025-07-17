@@ -1,0 +1,15 @@
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="!loading">
+  <h2>About the Service</h2>
+
+  <div *ngIf="!auth.isAdmin()">
+    <p>{{info.description}}</p>
+  </div>
+
+  <div *ngIf="auth.isAdmin()">
+    <textarea class="form-control" rows="8" placeholder="Service description" [(ngModel)]="editText"></textarea>
+    <button class="btn btn-primary mt-2" (click)="save()">Save</button>
+  </div>
+
+  <!-- Last edited info removed as per feedback -->
+</div>

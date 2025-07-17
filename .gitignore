@@ -1,0 +1,14 @@
+# .NET
+bin/
+obj/
+
+# Angular / Node
+UrlShortener/ClientApp/node_modules/
+UrlShortener/ClientApp/dist/
+
+# Angular build cache
+UrlShortener/ClientApp/.angular/
+
+# VSCode / Rider / etc.
+.vscode/
+.idea/
