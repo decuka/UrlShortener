@@ -63,7 +63,6 @@ npm run test -- --watch=false --browsers=ChromeHeadless
 ---
 ### Database
 Entity Framework Core migrations are applied automatically at application startup, so you do **not** need to run `dotnet ef database update` after cloning the repository. 
-```
 
 ---
 ## API Documentation (Swagger)
