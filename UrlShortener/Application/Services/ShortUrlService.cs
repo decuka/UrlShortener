@@ -38,6 +38,11 @@ namespace UrlShortener.Application.Services
 
         public async Task<ShortUrl> AddAsync(string originalUrl, string userId)
         {
+            if (string.IsNullOrWhiteSpace(originalUrl))
+                throw new ArgumentException("Original URL cannot be empty", nameof(originalUrl));
+
+            originalUrl = originalUrl.Trim();
+
             var existing = await _repository.GetByOriginalUrlAsync(originalUrl);
             if (existing != null)
                 throw new Exception("URL already exists!");

@@ -63,3 +63,19 @@ npm run test -- --watch=false --browsers=ChromeHeadless
 ---
 ### Database
 Entity Framework Core migrations are applied automatically at application startup, so you do **not** need to run `dotnet ef database update` after cloning the repository. 
+```
+
+---
+## API Documentation (Swagger)
+The back-end API exposes an interactive **Swagger / OpenAPI** specification.
+
+Run the application in development mode and open:
+
+```text
+https://localhost:7248/swagger
+```
+
+Here you can inspect all endpoints, their request/response schemas, and even execute calls directly from the browser.
+
+1. Click **Authorize** and paste a JWT access token (e.g. obtained from `/api/auth/login`) prefixed with `Bearer`.
+2. Use **Try it out** on any operation to send a request.

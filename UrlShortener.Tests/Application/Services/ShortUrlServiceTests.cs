@@ -26,6 +26,18 @@ public class ShortUrlServiceTests
     }
 
     [Fact]
+    public async Task AddAsync_ShouldTrimSpacesAndDetectDuplicate()
+    {
+        // Arrange
+        _repo.Setup(r => r.GetByOriginalUrlAsync("http://a"))
+             .ReturnsAsync(new ShortUrl { OriginalUrl = "http://a" });
+
+        // Act + Assert
+        await Assert.ThrowsAsync<Exception>(() =>
+            _svc.AddAsync("  http://a  ", "user1"));
+    }
+
+    [Fact]
     public async Task AddAsync_ShouldReturnUrlWith8CharCode()
     {
         // Arrange
